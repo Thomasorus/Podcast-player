@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Podcast player</title>
+	<link rel="stylesheet" href="player.css">
+	<script src="player.js"></script>
+</head>
+
+<body>
+	<audio id="player" src="sound.mp3"></audio>
+
+	<div class="audioplayer">
+		<progress id="seekbar" value="0" max="1"></progress>
+		<button id="playbutton" class="playbutton">
+			<div id="playtext" class="play-icon" aria-label="Play this audio file"></div>
+		</button>
+		<h2>Podcast Title</h2>
+		<div class="audioplayer__wrapper">
+			<button id="changeSpeed" type="button">Vitesse : x <span id="showSpeed">1</span></button>
+			<div class="timer">
+				<span id="currentTime">00:00</span>
+				<span id="totalTime"> / 00:00</span>
+			</div>
+			<div class="volume">
+				<input type="radio" name="volume" value="0.1" id="vol10" class="accessi" />
+				<label for="vol10">
+					<span class="accessi">Volume Level 10/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.2" id="vol20" class="accessi" />
+				<label for="vol20">
+					<span class="accessi">Volume Level 20/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.3" id="vol30" class="accessi" />
+				<label for="vol30">
+					<span class="accessi">Volume Level 30/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.4" id="vol40" class="accessi" />
+				<label for="vol40">
+					<span class="accessi">Volume Level 40/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.5" id="vol50" class="accessi" />
+				<label for="vol50">
+					<span class="accessi">Volume Level 50/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.6" id="vol60" class="accessi" />
+				<label for="vol60">
+					<span class="accessi">Volume Level 60/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.7" id="vol70" class="accessi" />
+				<label for="vol70">
+					<span class="accessi">Volume Level 70/100</span>
+				</label>
+				<input type="radio" name="volume" value="0.8" id="vol80" class="accessi" />
+				<label for="vol80">
+					<span class="accessi">Volume Level 80/100</span>
+				</label>
+				<input defaultChecked type="radio" name="volume" value="0.9" id="vol90" class="accessi" />
+				<label for="vol90">
+					<span class="accessi">Volume Level 90/100</span>
+				</label>
+				<input type="radio" name="volume" value="1" id="vol100" class="accessi" />
+				<label for="vol100">
+					<span class="accessi">Volume Level 100/100</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

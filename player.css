@@ -1,0 +1,212 @@
+body {
+    background: #ccc;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.accessi {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important
+}
+
+.audioplayer {
+    background: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+}
+
+.audioplayer__wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.speed-volume {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+.button:focus {
+    outline: 0
+}
+
+.playbutton {
+    border: 0;
+    min-width: 100px;
+    min-height: 100px;
+    background: #FFF;
+    color: #000;
+    padding: 0;
+    margin:0;
+}
+
+.timer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.playbutton:focus {
+    outline: red 1px;
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 26.0px;
+    border-color: transparent transparent transparent #333;
+    margin: auto;
+    cursor: pointer;
+}
+
+#changeSpeed,
+.volume {
+    background: #FFF;
+}
+
+.pause-icon {
+    width: 15px;
+  height: 15px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #202020;
+  border-style: double;
+  border-width: 0px 0px 0px 15px;
+  border-color: #202020;
+  margin: auto;
+  cursor: pointer;
+
+
+    
+}
+
+
+#changeSpeed {
+    color: #333;
+    border: 0;
+    height: 90px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0;
+}
+
+.volume {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding-right: 0;
+    align-items: flex-end;
+    height: 90px;
+    min-width: 90px;
+}
+
+.volume input~label {
+    background: #888;
+    display: flex;
+    flex: 1 0 auto;
+    margin: 0;
+    width: 10px;
+    max-height: 100%
+}
+
+.volume input~label:hover {
+    background: #ddd;
+    cursor: pointer
+}
+
+.volume label:nth-child(2) {
+    height: 5%
+}
+
+.volume label:nth-child(4) {
+    height: 15%
+}
+
+.volume label:nth-child(6) {
+    height: 25%
+}
+
+.volume label:nth-child(8) {
+    height: 35%
+}
+
+.volume label:nth-child(10) {
+    height: 45%
+}
+
+.volume label:nth-child(12) {
+    height: 55%
+}
+
+.volume label:nth-child(14) {
+    height: 65%
+}
+
+.volume label:nth-child(16) {
+    height: 75%
+}
+
+.volume label:nth-child(18) {
+    height: 85%
+}
+
+.volume label:nth-child(20) {
+    height: 95%
+}
+
+@media (max-width:440px) {
+    .volume input~label {
+        margin: 0;
+        width: 5px;
+    }
+}
+
+.volume input:checked~label {
+    background: #ddd;
+}
+
+.volume input:checked+label {
+    background: #888;
+    ;
+}
+
+progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+progress[value] {
+    border: transparent;
+    cursor: pointer;
+    height: 10px;
+    width: 100%;
+    background: #888;
+}
+
+progress[value]::-moz-progress-bar,
+progress[value]::-webkit-progress-bar {
+    width: 100%;
+    cursor: pointer;
+    background: rgba(0, 0, 0, .2);
+    border: 0;
+}
