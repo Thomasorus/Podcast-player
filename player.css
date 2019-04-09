@@ -128,8 +128,9 @@ body {
     max-height: 100%
 }
 
-.volume input~label:hover {
-    background: #ddd;
+.volume input~label:hover,
+.volume input:checked~label:hover {
+    background: #eee;
     cursor: pointer
 }
 
