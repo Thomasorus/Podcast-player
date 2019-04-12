@@ -41,6 +41,17 @@ body {
     height: 90px;
 }
 
+.timer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Buttons */
+
 .button:focus {
     outline: 0
 }
@@ -55,14 +66,6 @@ body {
     margin:0;
 }
 
-.timer {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    padding:10px;
-    text-align: center;
-    font-size: 12px;
-}
 
 .playButton:focus {
     outline: red 1px;
@@ -76,11 +79,6 @@ body {
     border-color: transparent transparent transparent #333;
     margin: auto;
     cursor: pointer;
-}
-
-#changeSpeed,
-.volume {
-    background: #FFF;
 }
 
 .pause-icon {
@@ -99,6 +97,10 @@ body {
     
 }
 
+#changeSpeed,
+.volume {
+    background: #FFF;
+}
 
 #changeSpeed {
     color: #333;
