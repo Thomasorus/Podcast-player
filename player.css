@@ -17,7 +17,7 @@ body {
     white-space: nowrap !important
 }
 
-.audioplayer {
+.audioPlayer {
     background: white;
     display: flex;
     flex-flow: row wrap;
@@ -26,7 +26,7 @@ body {
     margin: auto;
 }
 
-.audioplayer__wrapper {
+.audioPlayer__wrapper {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -41,20 +41,6 @@ body {
     height: 90px;
 }
 
-.button:focus {
-    outline: 0
-}
-
-.playbutton {
-    border: 0;
-    min-width: 100px;
-    min-height: 100px;
-    background: #FFF;
-    color: #000;
-    padding: 0;
-    margin:0;
-}
-
 .timer {
     display:flex;
     align-items: center;
@@ -64,8 +50,31 @@ body {
     font-size: 12px;
 }
 
-.playbutton:focus {
+/* Buttons */
+
+.button:focus {
+    outline: 0
+}
+
+.controlButton {
+    border: 0;
+    background: #FFF;
+    color: #000;
+    padding: 0;
+    margin:0;
+}
+
+.playButton {
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.playButton:focus {
     outline: red 1px;
+}
+
+.navigationButton {
+    width: 30%;
 }
 
 .play-icon {
@@ -76,11 +85,6 @@ body {
     border-color: transparent transparent transparent #333;
     margin: auto;
     cursor: pointer;
-}
-
-#changeSpeed,
-.volume {
-    background: #FFF;
 }
 
 .pause-icon {
@@ -94,6 +98,51 @@ body {
     border-color: #202020;
     margin: auto;
     cursor: pointer;
+}
+
+.reset-icon { /* An open circle */
+  position: relative;
+  width: 15px;
+  height: 15px;
+
+  border: 5px solid #333;
+  border-radius: 50%;
+  border-right-color: transparent;
+}
+
+.reset-icon::after { /* An arrow at the end of the circle */
+  content: "";
+  position: absolute;
+
+  border: 10px solid #ffffff;
+  top: -5px;
+  left: 8px;
+
+  border-bottom-color: #333;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-color: transparent;
+}
+
+.back-icon { /* This: < */
+  height: 10px;
+  width: 10px;
+  border: 10px solid #333;
+  border-width: 0 0 6px 6px;
+  transform: rotate(45deg);
+}
+
+.forward-icon { /* This: > */
+  height: 10px;
+  width: 10px;
+  border: 10px solid #333;
+  border-width: 6px 6px 0 0;
+  transform: rotate(45deg);
+}
+
+#changeSpeed,
+.volume {
+    background: #FFF;
 }
 
 #changeSpeed {
