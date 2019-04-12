@@ -70,12 +70,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var percent = progress.offsetX / this.offsetWidth;
         audio.currentTime = percent * audio.duration;
         progressBar.value = percent / 100;
-
-        // If audio is paused but already started, update the progress to localstorage
-        if (audio.duration > 0 && audio.paused) {
-            localStorage.setItem(filename, audio.currentTime);
-        }
-        udpateProgress();
+        updateProgress();
     }
 
     // A function to format a duration in seconds to a string 'hh:mm:ss'
@@ -96,26 +91,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
         return hours + ':' + minutes + ':' + seconds;
     }
 
-    // Function to get the audio current progress and show it inside the progress bar
-    function udpateProgress() {
+    /*
+     * A callback triggered upon audio progress.
+     * Actualizes both the progress bar and time display.
+     */
+    function updateProgress() {
         progressBar.value = audio.currentTime / audio.duration;
-    }
-
-    // A function to update the audio progress in real time in the player and local storage
-    var update = setInterval(function () {
         currentTime.innerHTML = formatTime(audio.currentTime);
         totalTime.innerHTML = formatTime(audio.duration);
-        if (audio.duration && localProgress) {
-            progressBar.value = localStorage.getItem(filename) / audio.duration;
-        }
-        // Updating localstorage in real time
-        if (audio.duration > 0 && !audio.paused) {
-            localStorage.setItem(filename, audio.currentTime);
-        }
-    }, 10);
+
+        // Save progress to local storage
+        localStorage.setItem(filename, audio.currentTime);
+    }
 
     // Event listener reacting to audio progressing
-    audio.addEventListener('progress', udpateProgress, false);
+    audio.addEventListener('timeupdate', updateProgress, false);
 
     // Event listeners checking for buttons clicks
     changeSpeed.addEventListener('click', setPlaySpeed, false);
