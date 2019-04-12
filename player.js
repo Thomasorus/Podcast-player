@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var changeSpeed = document.querySelector('#changeSpeed');
     var showSpeed = document.querySelector("#showSpeed");
     var changeVolume = document.querySelectorAll('input.accessi');
-    var playbutton = document.querySelector("#playbutton");
-    var playtext = document.querySelector("#playtext");
-    var progressbar = document.querySelector('#seekbar');
+    var playButton = document.querySelector("#playButton");
+    var playText = document.querySelector("#playText");
+    var progressBar = document.querySelector('#seekBar');
     var localProgress = localStorage.getItem(filename);
     if (!localProgress) {
         localStorage.setItem(filename, audio.currentTime);
@@ -51,23 +51,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
             else {
                 audio.play();
             }
-            playtext.setAttribute('class', 'pause-icon');
+            playText.setAttribute('class', 'pause-icon');
         }
 
         //Else audio is playing, pause it and remove pause icon
         else {
             audio.pause();
-            playtext.setAttribute('class', 'play-icon');
+            playText.setAttribute('class', 'play-icon');
         }
     }
-
 
     //A function to change the progress bar value on click
     function seekProgressBar(progress) {
         //Get the progress bar % location and add it to the audio current time
         var percent = progress.offsetX / this.offsetWidth;
         audio.currentTime = percent * audio.duration;
-        progressbar.value = percent / 100;
+        progressBar.value = percent / 100;
 
         //If audio is paused but already started, update the progress to localstorage
         if (audio.duration > 0 && audio.paused) {
@@ -114,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //Function to get the audio current progress and show it inside the progress bar
     function udpateProgress() {
-        progressbar.value = audio.currentTime / audio.duration;
+        progressBar.value = audio.currentTime / audio.duration;
     }
 
     //A function to update the audio progress in real time in the player and local storage
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             formatTime(audio.currentTime);
         }
         if (audio.duration && localProgress) {
-            progressbar.value = localStorage.getItem(filename) / audio.duration;
+            progressBar.value = localStorage.getItem(filename) / audio.duration;
         }
         //Updating localstorage in real time
         if (audio.duration > 0 && !audio.paused) {
@@ -141,8 +140,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //Event listeners checking for any change by the user
     changeSpeed.addEventListener('click', setPlaySpeed, false);
-    playbutton.addEventListener('click', playAudio, false);
-    progressbar.addEventListener('click', seekProgressBar, false);
+    playButton.addEventListener('click', playAudio, false);
+    progressBar.addEventListener('click', seekProgressBar, false);
     for (var i = 0; i < changeVolume.length; i++) {
         changeVolume[i].addEventListener("click", function () {
             setVolume(this.value);
