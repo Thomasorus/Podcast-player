@@ -76,25 +76,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         udpateProgress();
     }
 
-    // A Function to get the audio duration, format it and show it
-    function getTotalTime(time) {
-        var hours = Math.floor(time / 3600);
-        var minutes = Math.floor((time - hours * 3600) / 60);
-        var seconds = time - hours * 3600 - minutes * 60;
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        seconds = parseInt(seconds, 10);
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
-        totalTime.innerHTML = " / " + hours + ':' + minutes + ':' + seconds;
-    }
-
-    // Function to get the audio current progress, format it and show it
+    // A function to format a duration in seconds to a string 'hh:mm:ss'
     function formatTime(time) {
         var hours = Math.floor(time / 3600);
         var minutes = Math.floor((time - hours * 3600) / 60);
@@ -109,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        currentTime.innerHTML = hours + ':' + minutes + ':' + seconds;
+        return hours + ':' + minutes + ':' + seconds;
     }
 
     // Function to get the audio current progress and show it inside the progress bar
@@ -119,14 +101,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // A function to update the audio progress in real time in the player and local storage
     var update = setInterval(function () {
-        getTotalTime(audio.duration);
-
-        // Updating progress bar in real time
-        if (localProgress) {
-            formatTime(localStorage.getItem(filename));
-        } else {
-            formatTime(audio.currentTime);
-        }
+        currentTime.innerHTML = formatTime(audio.currentTime);
+        totalTime.innerHTML = formatTime(audio.duration);
         if (audio.duration && localProgress) {
             progressBar.value = localStorage.getItem(filename) / audio.duration;
         }
