@@ -108,6 +108,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
      * Actualizes both the progress bar and time display.
      */
     function updateProgress() {
+        if (audio.currentTime == audio.duration) {
+            pauseAudio();
+            resetAudio();
+        }
         progressBar.value = audio.currentTime / audio.duration;
         currentTime.innerHTML = formatTime(audio.currentTime);
         totalTime.innerHTML = formatTime(audio.duration);
