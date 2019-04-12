@@ -40,27 +40,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // A function to play audio and insert the pause icon
     function playAudio() {
-        // Check if audio has been started before and is not playing
-        if (audio.currentTime >= 0 && audio.paused) {
-
-            // Checking if there's any progress inside localstorage
-            if (localStorage.getItem(filename)) {
-                //Set the audio current time to the time stored in local storage
-                audio.currentTime = localStorage.getItem(filename);
-                audio.play();
-            }
-
-            // If no progress, just play from the beginnning and add pause icon
-            else {
-                audio.play();
-            }
+        if (audio.paused) {
+            audio.play();
             playText.setAttribute('class', 'pause-icon');
         }
+    }
 
-        // Else audio is playing, pause it and remove pause icon
-        else {
+    // A function to pause audio and insert the play icon
+    function pauseAudio() {
+        if (!audio.paused) {
             audio.pause();
             playText.setAttribute('class', 'play-icon');
+        }
+    }
+
+    // A function to play and pause audio
+    function togglePlay() {
+        if (audio.paused) {
+            playAudio();
+        } else {
+            pauseAudio();
         }
     }
 
@@ -109,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // Event listeners checking for buttons clicks
     changeSpeed.addEventListener('click', setPlaySpeed, false);
-    playButton.addEventListener('click', playAudio, false);
+    playButton.addEventListener('click', togglePlay, false);
     progressBar.addEventListener('click', seekProgressBar, false);
 
     // Register a click handler per volume section (0%, 10%, ..., 90%, 100%)
