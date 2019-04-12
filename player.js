@@ -11,9 +11,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var playButton = document.querySelector("#playButton");
     var playText = document.querySelector("#playText");
     var progressBar = document.querySelector('#seekBar');
+
+    // Resume play from saved progress
     var localProgress = localStorage.getItem(filename);
-    if (!localProgress) {
-        localStorage.setItem(filename, audio.currentTime);
+    if (localProgress) {
+        audio.currentTime = localProgress;
     }
 
 
