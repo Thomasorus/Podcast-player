@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var changeVolume = document.querySelectorAll('input.accessi');
     var playButton = document.querySelector("#playButton");
     var playText = document.querySelector("#playText");
+    var backbutton = document.querySelector("#backButton");
     var resetButton = document.querySelector("#resetButton");
+    var forwardbutton = document.querySelector("#forwardButton");
     var progressBar = document.querySelector('#seekBar');
 
     // Resume play from saved progress
@@ -76,6 +78,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
 
+    /*
+     * A function to build a callback that will change audio current time.
+     * Audio will be forwarded or rewinded of 'seconds' seconds. 'seconds' should be negative to rewind.
+     */
+    function buildAudioSeeker(seconds) {
+        return function () {
+            time = audio.currentTime;
+            if (time + seconds < 0) {
+                audio.currentTime = 0;
+            } else if (time + seconds > audio.duration) {
+                audio.currentTime = audio.duration;
+            } else {
+                audio.currentTime += seconds;
+            }
+            updateProgress();
+        }
+    }
+
     // A function to change the progress bar value on click
     function seekProgressBar(progress) {
         // Get the progress bar % location and add it to the audio current time
@@ -104,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     /*
-     * A callback triggered upon audio progress.
+     * A callback triggered upon audio progress, progress bar seeking and back/forward buttons.
      * Actualizes both the progress bar and time display.
      */
     function updateProgress() {
@@ -127,6 +147,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     changeSpeed.addEventListener('click', setPlaySpeed, false);
     playButton.addEventListener('click', togglePlay, false);
     resetButton.addEventListener('click', resetAudio, false);
+    backButton.addEventListener('click', buildAudioSeeker(-10), false);
+    forwardButton.addEventListener('click', buildAudioSeeker(10), false);
     progressBar.addEventListener('click', seekProgressBar, false);
 
     // Register a click handler per volume section (0%, 10%, ..., 90%, 100%)

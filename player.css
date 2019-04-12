@@ -127,6 +127,22 @@ body {
   border-left-color: transparent;
 }
 
+.back-icon { /* This: < */
+  height: 10px;
+  width: 10px;
+  border: 10px solid #333;
+  border-width: 0 0 6px 6px;
+  transform: rotate(45deg);
+}
+
+.forward-icon { /* This: > */
+  height: 10px;
+  width: 10px;
+  border: 10px solid #333;
+  border-width: 6px 6px 0 0;
+  transform: rotate(45deg);
+}
+
 #changeSpeed,
 .volume {
     background: #FFF;
