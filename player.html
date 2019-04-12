@@ -15,9 +15,16 @@
 
 	<div class="audioPlayer">
 		<progress id="seekBar" value="0" max="1"></progress>
-		<button id="playButton" class="playButton">
-			<div id="playText" class="play-icon" aria-label="Play this audio file"></div>
-		</button>
+        <div>
+            <button id="playButton" class="controlButton playButton">
+                <div id="playText" class="play-icon" aria-label="Play this audio file"></div>
+            </button>
+            <div>
+                <button id="resetButton" class="controlButton navigationButton">
+                    <div class="reset-icon" aria-label="Reset play"></div>
+                </button>
+            </div>
+        </div>
 		<h2>Podcast Title</h2>
 		<div class="audioPlayer__wrapper">
 			<button id="changeSpeed" type="button">Vitesse : x <span id="showSpeed">1</span></button>

@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var changeVolume = document.querySelectorAll('input.accessi');
     var playButton = document.querySelector("#playButton");
     var playText = document.querySelector("#playText");
+    var resetButton = document.querySelector("#resetButton");
     var progressBar = document.querySelector('#seekBar');
 
     // Resume play from saved progress
@@ -63,6 +64,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
 
+    // A function to start listening from the beginning
+    function resetAudio() {
+        if (audio.paused) {
+            // Don't autostart audio if it was paused, simply go back
+            audio.currentTime = 0;
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play();
+        }
+    }
+
     // A function to change the progress bar value on click
     function seekProgressBar(progress) {
         // Get the progress bar % location and add it to the audio current time
@@ -109,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Event listeners checking for buttons clicks
     changeSpeed.addEventListener('click', setPlaySpeed, false);
     playButton.addEventListener('click', togglePlay, false);
+    resetButton.addEventListener('click', resetAudio, false);
     progressBar.addEventListener('click', seekProgressBar, false);
 
     // Register a click handler per volume section (0%, 10%, ..., 90%, 100%)
