@@ -7,6 +7,7 @@ A simple yet robust and accessible podcast player. No dependencies, just needs a
 Features:
 - Reads MP3 files
 - Seekbar
+- Remembers the time when page is closed/reopened later 
 - Time + Total Time
 - Play/Pause button
 - Play speed button, speeds available are x0.75, x1, x1.25, x1.5, x1.75, x2
